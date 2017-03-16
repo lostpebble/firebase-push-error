@@ -1,15 +1,9 @@
 {
   "presets": [
-    "react-hmre",
     ["es2015", {
       "loose": true,
       "modules": false
     }],
-    "react",
     "stage-0"
-  ],
-  "plugins": [
-    "transform-decorators-legacy",
-    "transform-class-properties"
   ]
 }
