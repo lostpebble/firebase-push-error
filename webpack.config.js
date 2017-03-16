@@ -2,7 +2,9 @@ const { join } = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/push-error',
+    entry: {
+        'main': ['regenerator-runtime/runtime', './src/push-error']
+    },
     target: 'web',
     output: {
         path: join(__dirname, 'dist'),
@@ -11,7 +13,7 @@ module.exports = {
     },
     devtool: 'source-map',
     performance: {
-        hints: 'warning'
+        hints: false
     },
     module: {
         loaders: [
@@ -28,22 +30,6 @@ module.exports = {
           new webpack.LoaderOptionsPlugin({
               minimize: true,
               debug: false,
-          }),
-          new webpack.optimize.UglifyJsPlugin({
-              beautify: false,
-              mangle: {
-                  screw_ie8: true,
-              },
-              compress: {
-                  screw_ie8: true,
-                  warnings: false,
-                  drop_console: true,
-              },
-              screw_ie8: true,
-              output: {
-                  comments: false,
-              },
-              sourceMap: false,
           }),
           new webpack.DefinePlugin({
               'process.env': {
